@@ -25,17 +25,12 @@ bootstrapNestApplication({
       }),
     ],
     feature: [AppModule.forRoot()],
-    // Disable infrastructure modules in production
-    ...(process.env['NODE_ENV'] !== 'production'
-      ? {
-          infrastructure: [
-            InfrastructureMarkdownReportGenerator.forRoot({
-              staticConfiguration: {
-                markdownFile: join(__dirname, '..', 'INFRASTRUCTURE.MD'),
-              },
-            }),
-          ],
-        }
-      : {}),
+    infrastructure: [
+      InfrastructureMarkdownReportGenerator.forRoot({
+        staticConfiguration: {
+          markdownFile: join(__dirname, '..', 'INFRASTRUCTURE.MD'),
+        },
+      }),
+    ],
   },
 });
